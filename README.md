@@ -23,7 +23,7 @@ Como a API simula um banco digital, ela tem varias funções como:
 
 ### 🖼️Layout
 
-Abaixo tem algumas imagens da API rodando do Insomnia*
+Abaixo tem algumas imagens da API rodando no Insomnia*
 > *Insomnia é o programa que executa o servidor criado pela API
 
 ![imagem-do-projeto](https://github.com/Vettoferreira/API-bank/assets/72666573/69139812-b170-4e23-8f04-8650be02ce41)
@@ -34,7 +34,7 @@ Abaixo tem algumas imagens da API rodando do Insomnia*
 
 ### ⌨️Como executar o projeto
 
-#### pre-réquesitos
+#### pré-requesitos
 
 O projeto precisa de alguns programas para ser executados como: </br>
 
@@ -46,24 +46,88 @@ O projeto precisa de alguns programas para ser executados como: </br>
 
 ---
 
-### Executando o código 
+### 🖥️Rodando a API 
 
 	
  ```
 # Clone este repositório
-$ git clone git@github.com:cubos-academy/academy-template-readme-projects.gi
+~ $ git clone git@github.com:Vettoferreira/API-bank.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd academy-template-readme-projects
+$ cd API-bank //exemplo
 
-# Vá para a pasta server
-$ cd server
+# Vá para a pasta src
+$ cd src
 
 # Instale as dependências
 $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
+$ npm run dev:src
 
-# O servidor inciará na porta:3333 - acesse http://localhost:3333 
+# O servidor inciará na porta:8000 - acesse http://localhost/8000 
 ```
+
+### Executando no insomnia
+
+Já no insomnia, vão ter algumas requisições obrigatórias para se seguir </br>
+como se trata de uma API bancária ela requer que você digite algumas senhas ou numero da conta para acessar o conteudo </br>
+você determina a senha no controlador "listarConta" </br>
+crie as requisiçôes de acordo com os verbos citados no arquivos index.js 
+> exemplo: app.get("/contas, listarContas) </br>
+
+No insominia fica: `requisição GET url: localhost/8000/contas?senha_banco=senha_desejada` </br>
+
+segue lista de requisições:</br>
+```
+app.get("/contas", listarContas) ~ requer parametros na url ~ senha_banco="senha_desejada"
+
+app.post("/contas", criarConta)| e |app.put("/contas/:numeroConta/usuario", atualizarConta)
+~ requer um objeto no body com os seguintes parametros: 
+{
+	"nome":	 	
+	"cpf": 
+	"data_nascimento": 
+	"telefone": 
+	"email": 
+	"senha":
+}
+app.delete("/contas/:numeroConta", deletarConta) ~ requer um parametro numerico na url
+
+app.post("/transacoes/depositar", depositarValor) ~ requer um objeto no body com os seguintes parametros:
+
+{
+	"numero_conta": ,
+	"valor": ,
+	
+}
+
+app.post("/transacoes/sacar", sacarValor) ~ requer um objeto no body com os seguintes parametros:
+{
+	"numero_conta": ,
+	"valor": ,
+	"senha": 
+}
+
+app.post("/transacoes/transferir", transferirValor) ~ requer um objeto no body com os seguintes parametros:
+{
+	"numero_conta_origem": ,
+	"numero_conta_destino": ,
+	"valor": ,
+	"senha": 
+}
+app.get("/contas/saldo", verSaldo)| e |app.get("/contas/extrato", verExtrato) ~ requer dois parametros na url: ?numero_conta=3&senha=12345
+```
+
+--- 
+
+### Agora é só desfrutar da nossa API-Bank 👋
+
+
+
+
+
+
+
+
+
